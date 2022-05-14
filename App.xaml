@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:Practice"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="MainColor" Color="#fff"/>
+            <SolidColorBrush x:Key="PrimaryColor" Color="#4a67f7"/>
+            <SolidColorBrush x:Key="SecondaryColor" Color="#b5defa"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
