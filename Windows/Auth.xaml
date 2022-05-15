@@ -56,8 +56,8 @@
             <TextBlock Grid.Row="1" Grid.Column="0">Номер</TextBlock>
             <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Name="PassTxtBx">Пароль</TextBlock>
-            <TextBox Grid.Row="2" Grid.Column="1"/>
+            <TextBlock Grid.Row="2" Grid.Column="0">Пароль</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="PassTxtBx"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0">Код</TextBlock>
             <DockPanel Grid.Row="3" Grid.Column="1" Name="CodeTxtBx">
