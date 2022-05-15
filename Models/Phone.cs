@@ -35,7 +35,7 @@ namespace Practice.Models
 
         public static Phone FromString(string number)
         {
-            if (IsStringValidNumber(number)) throw new FormatException();
+            if (!IsStringValidNumber(number)) throw new FormatException();
 
             char countryCode;
             if (number[0] == '+')
@@ -45,7 +45,7 @@ namespace Practice.Models
             }
             else
             {
-                if (number[0] != '7') throw new FormatException();
+                if (number[0] != '8') throw new FormatException();
                 countryCode = number[0];
             }
 
