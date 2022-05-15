@@ -21,6 +21,37 @@ namespace Practice.Models
         }
 
 
+        public static bool IsStringValidNumber(string number)
+        {
+            if (number.Length < 11) return false;
+
+            for (int i = 0; i < number.Length; i++)
+            {
+                if (i == 0 && number[i] == '+') continue;
+                if (number[i] < '0' || number[i] > '9') return false;
+            }
+            return true;
+        }
+
+        public static Phone FromString(string number)
+        {
+            if (IsStringValidNumber(number)) throw new FormatException();
+
+            char countryCode;
+            if (number[0] == '+')
+            {
+                if (number[1] == '7') countryCode = '8';
+                else throw new FormatException();
+            }
+            else
+            {
+                if (number[0] != '7') throw new FormatException();
+                countryCode = number[0];
+            }
+
+            return new Phone(countryCode, number.Substring(1).ToCharArray());
+        }
+
 
 
         public int Id => m_id;
