@@ -23,5 +23,15 @@ namespace Practice.Windows
         {
             InitializeComponent();
         }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

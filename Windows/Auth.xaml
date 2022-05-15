@@ -27,7 +27,7 @@
         <Image Grid.Row="0" Grid.Column="2" 
                HorizontalAlignment="Right" VerticalAlignment="Top"
                Source="pack://application:,,,/Resources/logo.jpg"
-               Height="120"/>
+               Height="120" MaxHeight="120" MaxWidth="200"/>
 
         <Grid Grid.Row="1" Grid.Column="1" 
               VerticalAlignment="Stretch"
@@ -54,13 +54,13 @@
 
             
             <TextBlock Grid.Row="1" Grid.Column="0">Номер</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0">Пароль</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" Name="PassTxtBx">Пароль</TextBlock>
             <TextBox Grid.Row="2" Grid.Column="1"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0">Код</TextBlock>
-            <DockPanel Grid.Row="3" Grid.Column="1">
+            <DockPanel Grid.Row="3" Grid.Column="1" Name="CodeTxtBx">
                 <Button DockPanel.Dock="Right" BorderThickness="0" Height="20">
                     <Image Height="20" Width="20" Source="pack://application:,,,/Resources/refresh.jpg"/>
                 </Button>
@@ -75,8 +75,12 @@
                         <Setter Property="BorderThickness" Value="0"/>
                     </Style>
                 </UniformGrid.Resources>
-                <Button HorizontalAlignment="Left">Отмена</Button>
-                <Button HorizontalAlignment="Right">Вход</Button>
+                <Button HorizontalAlignment="Left" 
+                        Name="CancelBtn"
+                        Click="CancelBtn_Click">Отмена</Button>
+                <Button HorizontalAlignment="Right" 
+                        Name="LoginBtn"
+                        Click="LoginBtn_Click">Вход</Button>
             </UniformGrid>
         </Grid>
     </Grid>
