@@ -8,6 +8,8 @@ namespace Practice.Models
 {
     public class User
     {
+        public static readonly User Empty = new User(0, Phone.Empty, UserRole.Empty);
+
         public User(int id, Phone phone, UserRole role)
         {
             m_id = id;

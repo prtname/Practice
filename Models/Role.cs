@@ -8,6 +8,8 @@ namespace Practice.Models
 {
     public class UserRole
     {
+        public static UserRole Empty = new UserRole(0, string.Empty);
+
         public UserRole(int id, string title)
         {
             m_id = id;

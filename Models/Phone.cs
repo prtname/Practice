@@ -8,6 +8,8 @@ namespace Practice.Models
 {
     public class Phone
     {
+        public static Phone Empty = new Phone((char)0, Array.Empty<char>());
+
         public Phone(int id, char countryCode, char[] number)
             : this(countryCode, number)
         {
