@@ -57,14 +57,22 @@
             <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx" KeyDown="PhoneTxtBx_KeyDown"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" >Пароль</TextBlock>
-            <TextBox Grid.Row="2" Grid.Column="1" Name="PassTxtBx" KeyDown="PassTxtBx_KeyDown"/>
+            <TextBox Grid.Row="2" Grid.Column="1" 
+                     Name="PassTxtBx" 
+                     KeyDown="PassTxtBx_KeyDown"
+                     IsEnabled="False"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0">Код</TextBlock>
             <DockPanel Grid.Row="3" Grid.Column="1">
-                <Button DockPanel.Dock="Right" BorderThickness="0" Height="20">
+                <Button DockPanel.Dock="Right" 
+                        BorderThickness="0" Height="20"
+                        IsEnabled="False">
                     <Image Height="20" Width="20" Source="pack://application:,,,/Resources/refresh.jpg"/>
                 </Button>
-                <TextBox Name="CodeTxtBx" KeyDown="CodeTxtBx_KeyDown" Margin="0,0,10,0"/>
+                <TextBox Name="CodeTxtBx" 
+                         KeyDown="CodeTxtBx_KeyDown" 
+                         Margin="0,0,10,0"
+                         IsEnabled="False"/>
             </DockPanel>
 
             <UniformGrid Grid.Row="4" Grid.Column="1" Columns="2"
