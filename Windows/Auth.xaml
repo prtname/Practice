@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practice.Windows"
         mc:Ignorable="d"
-        Title="Вход" Height="280" Width="500" MinHeight="280" MinWidth="500">
+        Title="Вход" Height="280" Width="450" MinHeight="280" MinWidth="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,7 +27,7 @@
         <Image Grid.Row="0" Grid.Column="2" 
                HorizontalAlignment="Right" VerticalAlignment="Top"
                Source="pack://application:,,,/Resources/logo.jpg"
-               Height="120" MaxHeight="120" MaxWidth="200"/>
+               Height="100" MaxHeight="120"/>
 
         <Grid Grid.Row="1" Grid.Column="1" 
               VerticalAlignment="Stretch"
@@ -54,17 +54,17 @@
 
             
             <TextBlock Grid.Row="1" Grid.Column="0">Номер</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx" KeyDown="PhoneTxtBx_KeyDown"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0">Пароль</TextBlock>
-            <TextBox Grid.Row="2" Grid.Column="1" Name="PassTxtBx"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" >Пароль</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="PassTxtBx" KeyDown="PassTxtBx_KeyDown"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0">Код</TextBlock>
-            <DockPanel Grid.Row="3" Grid.Column="1" Name="CodeTxtBx">
+            <DockPanel Grid.Row="3" Grid.Column="1">
                 <Button DockPanel.Dock="Right" BorderThickness="0" Height="20">
                     <Image Height="20" Width="20" Source="pack://application:,,,/Resources/refresh.jpg"/>
                 </Button>
-                <TextBox Margin="0,0,10,0"/>
+                <TextBox Name="CodeTxtBx" KeyDown="CodeTxtBx_KeyDown" Margin="0,0,10,0"/>
             </DockPanel>
 
             <UniformGrid Grid.Row="4" Grid.Column="1" Columns="2"
