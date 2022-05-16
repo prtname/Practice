@@ -54,12 +54,16 @@
 
             
             <TextBlock Grid.Row="1" Grid.Column="0">Номер</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="PhoneTxtBx" KeyDown="PhoneTxtBx_KeyDown"/>
+            <TextBox Grid.Row="1" Grid.Column="1" 
+                     Name="PhoneTxtBx" 
+                     TextChanged="PhoneTxtBx_TextChanged"
+                     KeyDown="PhoneTxtBx_KeyDown"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" >Пароль</TextBlock>
             <TextBox Grid.Row="2" Grid.Column="1" 
                      Name="PassTxtBx" 
                      KeyDown="PassTxtBx_KeyDown"
+                     TextChanged="PassTxtBx_TextChanged"
                      IsEnabled="False"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0">Код</TextBlock>
@@ -71,6 +75,7 @@
                 </Button>
                 <TextBox Name="CodeTxtBx" 
                          KeyDown="CodeTxtBx_KeyDown" 
+                         TextChanged="CodeTxtBx_TextChanged"
                          Margin="0,0,10,0"
                          IsEnabled="False"/>
             </DockPanel>
@@ -88,7 +93,8 @@
                         Click="CancelBtn_Click">Отмена</Button>
                 <Button HorizontalAlignment="Right" 
                         Name="LoginBtn"
-                        Click="LoginBtn_Click">Вход</Button>
+                        Click="LoginBtn_Click"
+                        IsEnabled="False">Вход</Button>
             </UniformGrid>
         </Grid>
     </Grid>

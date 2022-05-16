@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,58 @@ namespace Practice.Windows
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PhoneTxtBx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (PassTxtBx.IsEnabled)
+            {
+                PassTxtBx.Clear();
+                PassTxtBx.IsEnabled = false;
+            }
+
+            if (!String.IsNullOrWhiteSpace(PhoneTxtBx.Text) && Phone.IsStringValidNumber(PhoneTxtBx.Text))
+            {
+                LoginBtn.IsEnabled = true;
+            }
+            else
+            {
+                LoginBtn.IsEnabled = false;
+            }
+        }
+
+        private void PassTxtBx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (CodeTxtBx.IsEnabled)
+            {
+                CodeTxtBx.Clear();
+                CodeTxtBx.IsEnabled = false;
+            }
+        }
+
+        private void CodeTxtBx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(CodeTxtBx.Text)) LoginBtn.IsEnabled = true;
+            else LoginBtn.IsEnabled = false;
+        }
+
+        private void PhoneTxtBx_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                PassTxtBx.IsEnabled = true;
+                PassTxtBx.Focus();
+            }
+        }
+
+        private void PassTxtBx_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void CodeTxtBx_KeyDown(object sender, KeyEventArgs e)
         {
 
         }
