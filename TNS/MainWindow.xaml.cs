@@ -24,5 +24,10 @@ namespace TNS
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = (Button)sender;
+        }
     }
 }
