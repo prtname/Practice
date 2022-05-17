@@ -70,7 +70,9 @@
             <DockPanel Grid.Row="3" Grid.Column="1">
                 <Button DockPanel.Dock="Right" 
                         BorderThickness="0" Height="20"
-                        IsEnabled="False">
+                        IsEnabled="False"
+                        Name="RefreshCodeBtn"
+                        Click="RefreshCodeBtn_Click">
                     <Image Height="20" Width="20" Source="pack://application:,,,/Resources/refresh.jpg"/>
                 </Button>
                 <TextBox Name="CodeTxtBx" 

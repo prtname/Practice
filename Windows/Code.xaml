@@ -11,12 +11,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                   FontSize="28"
-                   Foreground="{StaticResource PrimaryColor}"
-                   Name="CodeTxtBlc">
-        </TextBlock>
+        <TextBox Grid.Row="0"
+                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                 FontSize="28"
+                 BorderThickness="0"
+                 Foreground="{StaticResource PrimaryColor}" Background="Transparent"
+                 Name="CodeTxtBlc"
+                 IsReadOnly="True">
+        </TextBox>
         <TextBlock Grid.Row="1">
             После закрытия окна у Вас будет 10 секунд для ввода кода
         </TextBlock>
