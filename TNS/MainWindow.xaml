@@ -8,32 +8,45 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+        <Border Grid.Column="0" 
+                BorderThickness="0,0,1,0" BorderBrush="Gray"
+                Padding="5">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="0,10,0,0"/>
+                    </Style>
+                </Grid.Resources>
 
-            <Image Grid.Row="0" Source="pack://application:,,,/Resources/logo.jpg"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
-            <ItemsControl Grid.Row="1" Name="MenuItems">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding Title}" Click="Button_Click" Tag="{Binding Uri}"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                <Image Grid.Row="0" Source="pack://application:,,,/Resources/logo.jpg"/>
 
-            <StackPanel Grid.Row="4">
-                <Button>проф.</Button>
-                <Button>?</Button>
-            </StackPanel>
-        </Grid>
+                <ItemsControl Grid.Row="1" Name="MenuItems">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click" Tag="{Binding Uri}"
+                                    Padding="0,10">
+                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" TextAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <StackPanel Grid.Row="4">
+                    <Button>проф.</Button>
+                    <Button>?</Button>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
