@@ -1,4 +1,5 @@
-﻿using Practice.Models;
+﻿using Practice.DataAccess;
+using Practice.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,8 +79,11 @@ namespace TNS
         public MainWindow()
         {
             InitializeComponent();
+            User.DefaultIcon = new BitmapImage(new Uri("pack://application:,,,/Resources/default.jpg"));
+            m_usersRepository = new ListUsersRepository();
 
-            CurrentUser = new User(0, new Phone("88005553535".ToCharArray()), new UserRole(5, "odmen"));
+            UsersCmbBx.ItemsSource = m_usersRepository.GetAllUsers();
+            UsersCmbBx.SelectedItem = UsersCmbBx.Items[0];
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -88,13 +92,19 @@ namespace TNS
             var item = (MenuItem)menuItem.Tag;
 
             TitleTextBlc.Text = item.Description;
+            this.Title = item.Description;
 
             PageFrame.Navigate(item.Uri);
         }
 
+        private void UsersCmbBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CurrentUser = (User)UsersCmbBx.SelectedItem;
+        }
 
 
         private static MenuItem[][] m_menuItems;
+        private UsersRepository m_usersRepository;
 
         private User CurrentUser
         {
@@ -104,8 +114,11 @@ namespace TNS
                 m_currentUser = value;
 
                 MenuItems.ItemsSource = m_menuItems[value.Role.Id];
+                TitleTextBlc.Text = String.Empty;
+                PageFrame.Content = String.Empty;
             }
         }
         private User m_currentUser = User.Empty;
+
     }
 }
