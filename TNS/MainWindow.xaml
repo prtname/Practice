@@ -67,5 +67,6 @@
                 </StackPanel>
             </Grid>
         </Border>
+        <Frame Grid.Column="1" Name="PageFrame"/>
     </Grid>
 </Window>
