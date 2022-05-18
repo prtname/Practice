@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,65 @@ namespace TNS
     /// </summary>
     public partial class MainWindow : Window
     {
+        static MainWindow()
+        {
+            m_menuItems = new MenuItem[][]
+            {
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative)),
+                    new MenuItem("Биллинг", "Биллинг", new Uri("Pages/Billing.xaml", UriKind.Relative)),
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative)),
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("Поддержка пользователей", "Поддержка пользователей", new Uri("Pages/Support.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative)),
+                    new MenuItem("Управление оборудованием", "Управление оборудованием", new Uri("Pages/HardwareControl.xaml", UriKind.Relative))
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("Поддержка пользователей", "Поддержка пользователей", new Uri("Pages/Support.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative)),
+                    new MenuItem("Управление оборудованием", "Управление оборудованием", new Uri("Pages/HardwareControl.xaml", UriKind.Relative))
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("Биллинг", "Биллинг", new Uri("Pages/Billing.xaml", UriKind.Relative)),
+                    new MenuItem("Активы", "Активы", new Uri("Pages/Assets.xaml", UriKind.Relative))
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("Поддержка пользователей", "Поддержка пользователей", new Uri("Pages/Support.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative)),
+                    new MenuItem("Управление оборудованием", "Управление оборудованием", new Uri("Pages/HardwareControl.xaml", UriKind.Relative)),
+                    new MenuItem("Биллинг", "Биллинг", new Uri("Pages/Billing.xaml", UriKind.Relative)),
+                    new MenuItem("Активы", "Активы", new Uri("Pages/Assets.xaml", UriKind.Relative))
+                },
+                new MenuItem[]
+                {
+                    new MenuItem("Абоненты", "Абоненты ТНС", new Uri("Pages/Subscribers.xaml", UriKind.Relative)),
+                    new MenuItem("Активы", "Активы", new Uri("Pages/Assets.xaml", UriKind.Relative)),
+                    new MenuItem("Управление оборудованием", "Управление оборудованием", new Uri("Pages/HardwareControl.xaml", UriKind.Relative)),
+                    new MenuItem("CRM", "CRM", new Uri("Pages/CRM.xaml", UriKind.Relative))
+                }
+            };
+        }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            MenuItems.ItemsSource = new List<MenuItem> 
-            { 
-                new MenuItem("HHgg", "GGhh", new Uri("App.xaml", UriKind.Relative)),
-                new MenuItem("AAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCC", "GGhh", new Uri("App.xaml", UriKind.Relative))
-            };
+            CurrentUser = new User(0, new Phone("88005553535".ToCharArray()), new UserRole(5, "odmen"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,7 +89,23 @@ namespace TNS
 
             TitleTextBlc.Text = item.Description;
 
-            //PageFrame.Navigate(uri);
+            PageFrame.Navigate(item.Uri);
         }
+
+
+
+        private static MenuItem[][] m_menuItems;
+
+        private User CurrentUser
+        {
+            get => m_currentUser;
+            set
+            {
+                m_currentUser = value;
+
+                MenuItems.ItemsSource = m_menuItems[value.Role.Id];
+            }
+        }
+        private User m_currentUser = User.Empty;
     }
 }
