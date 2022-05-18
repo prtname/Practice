@@ -34,6 +34,9 @@ namespace TNS
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var menuItem = (Button)sender;
+            var uri = (Uri)menuItem.Tag;
+
+            PageFrame.Navigate(uri);
         }
     }
 }
