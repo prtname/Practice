@@ -12,6 +12,7 @@ namespace Practice.DataAccess
         public ListUsersRepository()
         {
             m_users.Add(new User(1, new Phone("88005553535".ToCharArray()), new UserRole(1, "admin")));
+            m_users.Add(new User(2, new Phone("88005553535".ToCharArray()), new UserRole(5, "admin")));
         }
 
         public User GetUser(Phone phone, string password)
@@ -44,7 +45,10 @@ namespace Practice.DataAccess
             return false;
         }
 
-
+        public IEnumerable<User> GetAllUsers()
+        {
+            return m_users;
+        }
 
         private List<User> m_users = new List<User>();
     }

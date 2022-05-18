@@ -1,5 +1,6 @@
 ﻿using Practice.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace Practice.DataAccess
         User GetUser(Phone phone, string password);
         bool HasUser(Phone phone, string password);
         bool HasUserWithPhone(Phone phone);
+        IEnumerable<User> GetAllUsers();
     }
 }
