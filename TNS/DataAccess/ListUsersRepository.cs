@@ -11,8 +11,8 @@ namespace Practice.DataAccess
     {
         public ListUsersRepository()
         {
-            m_users.Add(new User(1, new Phone("88005553535".ToCharArray()), new UserRole(1, "admin")));
-            m_users.Add(new User(2, new Phone("88005553535".ToCharArray()), new UserRole(5, "admin")));
+            m_users.Add(new User(1, "first", "second", "third", new Phone("88005553535".ToCharArray()), new UserRole(1, "admin")));
+            m_users.Add(new User(2, "first", "middle", "last", new Phone("88005553535".ToCharArray()), new UserRole(5, "admin")));
         }
 
         public User GetUser(Phone phone, string password)

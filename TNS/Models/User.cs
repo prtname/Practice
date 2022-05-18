@@ -35,6 +35,9 @@ namespace Practice.Models
         public Phone Phone => m_phone;
         public UserRole Role => m_role;
         public BitmapImage Icon => m_icon;
+        public string FirstName => m_firstName;
+        public string MiddleName => m_middleName;
+        public string LastName => m_lastName;
 
 
 
