@@ -9,6 +9,37 @@
       Title="Subscribers">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,1,0,0"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+            </Style>
+        </Grid.Resources>
+
+        <Border Grid.Row="1" Grid.Column="0">
+            <TextBlock>Что-то</TextBlock>
+        </Border>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   Margin="10,0,0,0"
+                   FontSize="16"
+                   TextAlignment="Center"
+                   Background="LightGray">
+            События
+        </TextBlock>
+        <Border Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+            <TextBlock Grid.Row="1" Grid.Column="1" Background="LightGray">
+                События
+            </TextBlock>
+        </Border>
     </Grid>
 </Page>
