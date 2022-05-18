@@ -23,6 +23,17 @@ namespace TNS
         public MainWindow()
         {
             InitializeComponent();
+
+            MenuItems.ItemsSource = new List<MenuItem> 
+            { 
+                new MenuItem("HHgg", new Uri("App.xaml", UriKind.Relative)),
+                new MenuItem("AAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCC", new Uri("App.xaml", UriKind.Relative))
+            };
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = (Button)sender;
         }
     }
 }
