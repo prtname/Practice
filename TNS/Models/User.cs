@@ -16,6 +16,7 @@ namespace Practice.Models
             Id = id;
             Role = role;
             FIO = fio;
+            Icon = DefaultIcon;
         }
 
         public User(string id, string fio, string role, BitmapImage icon)
