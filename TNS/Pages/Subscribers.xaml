@@ -6,11 +6,12 @@
       xmlns:local="clr-namespace:TNS.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Subscribers">
+      Title="Subscribers" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -26,18 +27,41 @@
         </Grid.Resources>
 
         <Border Grid.Row="1" Grid.Column="0">
-            <DataGrid AutoGenerateColumns="False" Name="DtGrid" CanUserDeleteRows="False" CanUserAddRows="False">
-            </DataGrid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="0" Name="DtGrid" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер абонента" Binding="{Binding Номер_абонента}"/>
+                        <DataGridTextColumn Header="Номер договора" Binding="{Binding Номер_договора}"/>
+                        <DataGridTextColumn Header="Лицевой счет" Binding="{Binding Лицевой_счет}"/>
+                        <DataGridTextColumn Header="Услуги" Binding="{Binding Все_услуги}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <UniformGrid Rows="1" Grid.Row="1">
+                    <CheckBox Name="ActiveClientsChkBx" IsChecked="True" Checked="ActiveClientsChkBx_Checked" Unchecked="ActiveClientsChkBx_Unchecked">Активные</CheckBox>
+                    <CheckBox Name="InactiveClientsChkBx" IsChecked="True" Checked="InactiveClientsChkBx_Checked" Unchecked="InactiveClientsChkBx_Unchecked">Неактивные</CheckBox>
+                </UniformGrid>
+                
+            </Grid>
         </Border>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" 
-                   Margin="10,0,0,0"
+        <TextBlock Grid.Row="0" Grid.Column="2" 
                    FontSize="16"
                    TextAlignment="Center"
                    Background="LightGray">
             События
         </TextBlock>
-        <Border Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" ShowsPreview="True" 
+                      VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"
+                      Background="Transparent"
+                      Margin="3,0">
+        </GridSplitter>
+        <Border Grid.Row="1" Grid.Column="2">
             <TextBlock Grid.Row="1" Grid.Column="1" Background="LightGray">
                 События
             </TextBlock>

@@ -117,7 +117,6 @@ namespace TNS
             m_usersRepository = new SqlUsersRepository();
 
             UsersCmbBx.ItemsSource = m_usersRepository.GetAllUsers();
-            //UsersCmbBx.SelectedItem = UsersCmbBx.Items[0];
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
