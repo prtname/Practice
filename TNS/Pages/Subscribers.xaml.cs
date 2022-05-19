@@ -79,5 +79,12 @@ namespace TNS.Pages
             else
                 m_dataView.RowFilter = "1=0";
         }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView row = DtGrid.SelectedItem as DataRowView;
+            var window = new CustomerDetails(row.Row.ItemArray[0].ToString());
+            window.Show();
+        }
     }
 }

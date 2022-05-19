@@ -34,6 +34,11 @@
                 </Grid.RowDefinitions>
 
                 <DataGrid Grid.Row="0" Name="DtGrid" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.RowStyle>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Номер абонента" Binding="{Binding Номер_абонента}"/>
                         <DataGridTextColumn Header="Номер договора" Binding="{Binding Номер_договора}"/>
