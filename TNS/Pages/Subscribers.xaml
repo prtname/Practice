@@ -26,7 +26,8 @@
         </Grid.Resources>
 
         <Border Grid.Row="1" Grid.Column="0">
-            <TextBlock>Что-то</TextBlock>
+            <DataGrid AutoGenerateColumns="False" Name="DtGrid" CanUserDeleteRows="False" CanUserAddRows="False">
+            </DataGrid>
         </Border>
 
         <TextBlock Grid.Row="0" Grid.Column="1" 

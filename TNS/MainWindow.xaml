@@ -80,11 +80,7 @@
                           SelectionChanged="UsersCmbBx_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding FirstName}"/>
-                                <TextBlock Margin="2,0" Text="{Binding MiddleName}"/>
-                                <TextBlock Text="{Binding LastName}"/>
-                            </StackPanel>
+                                <TextBlock Text="{Binding FIO}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>

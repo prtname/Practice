@@ -10,9 +10,6 @@ namespace Practice.DataAccess
 {
     public interface UsersRepository
     {
-        User GetUser(Phone phone, string password);
-        bool HasUser(Phone phone, string password);
-        bool HasUserWithPhone(Phone phone);
         IEnumerable<User> GetAllUsers();
     }
 }
