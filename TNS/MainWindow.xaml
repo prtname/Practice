@@ -85,9 +85,6 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Border Name="UserImgBorder" CornerRadius="8" Height="50" Width="50">
-                    <Border.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Resources/default.jpg"/>
-                    </Border.Background>
                 </Border>
             </StackPanel>
 

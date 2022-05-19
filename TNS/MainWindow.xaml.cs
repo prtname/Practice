@@ -24,11 +24,19 @@ namespace TNS
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS02; Initial Catalog=Uchet.Ses2;Integrated Security=True");
+        public static SqlConnection connection = new SqlConnection(@"Data Source=(local); Initial Catalog=Uchet.Ses2;Integrated Security=True");
 
         static MainWindow()
         {
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Невозможно подключится к базе данных.\nНажмите ОК для завершения.", null, MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
 
             m_menuItems = new Dictionary<string, MenuItem[]>();
 
@@ -141,6 +149,7 @@ namespace TNS
 
                 if (value != null)
                 {
+                    UserImgBorder.Background = new ImageBrush(value.Icon);
                     if (m_menuItems.ContainsKey(value.Role))
                         MenuItems.ItemsSource = m_menuItems[value.Role];
                     else
