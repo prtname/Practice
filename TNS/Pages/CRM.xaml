@@ -5,10 +5,102 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TNS.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="400"
       Title="CRM">
 
     <Grid>
-        <TextBlock>123</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,1,0,0"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+            </Style>
+        </Grid.Resources>
+
+        <Border Grid.Row="0">
+            <UniformGrid Columns="2" Grid.Row="0" HorizontalAlignment="Center">
+                <UniformGrid.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                    </Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="20,7"/>
+                    </Style>
+                </UniformGrid.Resources>
+                
+                <TextBlock>Номер заявки</TextBlock>
+                <TextBox Name="ApplicationNumber"/>
+
+                <TextBlock>Дата создания</TextBlock>
+                <TextBox Name="CreationDate" IsReadOnly="True" IsEnabled="False"/>
+
+                <TextBlock>Номер абонента</TextBlock>
+                <TextBox Name="ClientNumber"/>
+
+                <TextBlock>Лицевой счет абонента</TextBlock>
+                <TextBox Name="AccountNumber"/>
+
+                <TextBlock>Услуга</TextBlock>
+                <ComboBox Name="Service">
+                    <ComboBoxItem>Интернет</ComboBoxItem>
+                    <ComboBoxItem>Мобильная связь</ComboBoxItem>
+                    <ComboBoxItem>Телевидение</ComboBoxItem>
+                    <ComboBoxItem>Видеонаблюдение</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock>Вид услуги</TextBlock>
+                <ComboBox Name="ServiceType" SelectionChanged="ServiceType_SelectionChanged">
+                    <ComboBoxItem>Подключение</ComboBoxItem>
+                    <ComboBoxItem>Управление договором/контактными данными</ComboBoxItem>
+                    <ComboBoxItem>Управление тарифом/услугой</ComboBoxItem>
+                    <ComboBoxItem>Диагностика и настройка оборудования/подключения</ComboBoxItem>
+                    <ComboBoxItem>Оплата услуг</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock>Тип услуги</TextBlock>
+                <ComboBox Name="TypeOfService" IsEnabled="False"></ComboBox>
+
+                <TextBlock>Статус</TextBlock>
+                <TextBox Name="Status" IsReadOnly="True" IsEnabled="False"/>
+
+                <TextBlock>Тип оборудования клиента</TextBlock>
+                <TextBox Name="HardwareType"/>
+
+                <TextBlock>Тип проблемы</TextBlock>
+                <ComboBox Name="IssueType">
+                    <ComboBoxItem>Консультация</ComboBoxItem>
+                    <ComboBoxItem>Тех. обслуживание</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock>Описание проблемы</TextBlock>
+                <TextBox Name="Description"/>
+
+                <TextBlock>Дата закрытия</TextBlock>
+                <TextBox Name="CloseDate" IsReadOnly="True" IsEnabled="False"/>
+            </UniformGrid>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="10,2"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Click="Button_Click">Создать</Button>
+        </StackPanel>
     </Grid>
 </Page>
