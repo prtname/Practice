@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TNS\**" />
+    <EmbeddedResource Remove="TNS\**" />
+    <None Remove="TNS\**" />
+    <Page Remove="TNS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\logo.jpg" />
     <None Remove="Resources\refresh.jpg" />
   </ItemGroup>
