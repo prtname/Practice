@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TNS.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="400"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="CRM">
 
     <Grid>
@@ -74,7 +74,10 @@
                 <ComboBox Name="TypeOfService" IsEnabled="False"></ComboBox>
 
                 <TextBlock>Статус</TextBlock>
-                <TextBox Name="Status" IsReadOnly="True" IsEnabled="False"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="Status" IsReadOnly="True" IsEnabled="False" Text="Новая"/>
+                    <Button Height="20" Margin="10,0,0,0" Click="Button_Click_1">Проверить оборудование</Button>
+                </StackPanel>
 
                 <TextBlock>Тип оборудования клиента</TextBlock>
                 <TextBox Name="HardwareType"/>

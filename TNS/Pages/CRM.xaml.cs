@@ -74,7 +74,7 @@ namespace TNS.Pages
 
         private void ServiceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TypeOfService.ItemsSource = m_services[ServiceType.Text];
+            TypeOfService.ItemsSource = m_services[SelectedServiceType];
             TypeOfService.IsEnabled = true;
         }
 
@@ -82,15 +82,15 @@ namespace TNS.Pages
         {
             var command = new SqlCommand("INSERT INTO Zayavki VALUES (@number, " +
                 "@creation, @ls, @service, @serviceType, @typeOfService, @status, " +
-                "@hardwareType, @description, @close, @issueType)");
+                "@hardwareType, @description, @close, @issueType)", MainWindow.connection);
             command.Parameters.AddRange(new List<SqlParameter>
             {
                 new SqlParameter("@number", ApplicationNumber.Text),
                 new SqlParameter("@creation", DateTime.Today),
                 new SqlParameter("@ls", Double.Parse(AccountNumber.Text)),
                 new SqlParameter("@service", Service.Text),
-                new SqlParameter("@serviceType", ServiceType.Text),
-                new SqlParameter("@typeOfService", TypeOfService.Text),
+                new SqlParameter("@serviceType", SelectedServiceType),
+                new SqlParameter("@typeOfService", SelectedTypeOfService),
                 new SqlParameter("@status", Status.Text),
                 new SqlParameter("@hardwareType", HardwareType.Text),
                 new SqlParameter("@description", Description.Text),
@@ -98,8 +98,28 @@ namespace TNS.Pages
                 new SqlParameter("@issueType", IssueType.Text)
             }.ToArray());
 
-            command.ExecuteNonQuery();
+            try
+            {
+                int i = command.ExecuteNonQuery();
+                if (i > 0) MessageBox.Show("Заявка успешно добавлена", "Да", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, null, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        private string SelectedServiceType => ((ComboBoxItem)ServiceType.SelectedItem).Content.ToString();
+        private string SelectedTypeOfService => TypeOfService.SelectedItem.ToString();
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Random random = new Random();
+            double i = random.Next() % 100;
+            if (i > 75)
+                Status.Text = "Требует выезда";
+            else
+                Status.Text = "Закрытая";
+        }
     }
 }
