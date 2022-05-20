@@ -22,8 +22,13 @@ namespace TNS.Pages
     /// </summary>
     public partial class Subscribers : Page
     {
+        private class UserEvent
+        {
+            public string Text { get; set; }
+        }
         public Subscribers()
         {
+            string role = MainWindow.CurrentUserRole;
             var command = new SqlCommand("SELECT *, concat_ws(', ', Услуги, Услуги1, Услуги2) AS Все_услуги FROM Abonenti", MainWindow.connection);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -32,7 +37,25 @@ namespace TNS.Pages
 
             m_dataView = new DataView(dt);
 
+            command = new SqlCommand("SELECT События FROM InformDlyaSotrudnikov WHERE Должность=@role", MainWindow.connection);
+            command.Parameters.Add(new SqlParameter("@role", role));
+            var events = new List<UserEvent>();
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    foreach (string ev in reader.GetString(0).Split(','))
+                    {
+                        events.Add(new UserEvent()
+                        {
+                            Text = ev.Replace(';', '\n')
+                        });
+                    }
+                }
+            }
+
             InitializeComponent();
+            EventsControl.ItemsSource = events;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -67,7 +90,7 @@ namespace TNS.Pages
         private void ActiveClientsChkBx_Unchecked(object sender, RoutedEventArgs e)
         {
             if (InactiveClientsChkBx.IsChecked == true)
-                m_dataView.RowFilter = "Причина_расторжения_договора is null";
+                m_dataView.RowFilter = "Причина_расторжения_договора is not null";
             else
                 m_dataView.RowFilter = "1=0";
         }
@@ -75,7 +98,7 @@ namespace TNS.Pages
         private void InactiveClientsChkBx_Unchecked(object sender, RoutedEventArgs e)
         {
             if (ActiveClientsChkBx.IsChecked == true)
-                m_dataView.RowFilter = "Причина_расторжения_договора is not null";
+                m_dataView.RowFilter = "Причина_расторжения_договора is null";
             else
                 m_dataView.RowFilter = "1=0";
         }

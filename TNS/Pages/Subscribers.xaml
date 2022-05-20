@@ -66,10 +66,16 @@
                       Background="Transparent"
                       Margin="3,0">
         </GridSplitter>
-        <Border Grid.Row="1" Grid.Column="2">
-            <TextBlock Grid.Row="1" Grid.Column="1" Background="LightGray">
-                События
-            </TextBlock>
+        <Border Grid.Row="1" Grid.Column="2" Background="LightGray">
+            <ScrollViewer VerticalScrollBarVisibility="auto">
+                <ItemsControl Name="EventsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBox Background="Gray" IsReadOnly="True" BorderThickness="0" Text="{Binding Text}" Margin="1,5" TextAlignment="Center" Padding="5" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Page>

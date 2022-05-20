@@ -136,6 +136,7 @@ namespace TNS
         }
 
 
+        public static string CurrentUserRole { get; private set; }
         private static Dictionary<string, MenuItem[]> m_menuItems;
         private UsersRepository m_usersRepository;
 
@@ -149,6 +150,7 @@ namespace TNS
                 if (value != null)
                 {
                     UserImgBorder.Background = new ImageBrush(value.Icon);
+                    CurrentUserRole = value.Role;
                     if (m_menuItems.ContainsKey(value.Role))
                         MenuItems.ItemsSource = m_menuItems[value.Role];
                     else
